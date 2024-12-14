@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            height: 100%;
+        }
+        pre {
+            background-color: black;
+            border-radius: 5px;
+            width: 100%;
+            border-radius: 8px;
+            color: white;
+        }
+        code {
+            color: white;
+        }
+
+        b{
+            color: red;
+        }
+
+        .answer {
+            font-size: 14px;
+            color: green;
+        }
+
+        .question-container {
+            margin: 10px 50px;
+        }
+        
+        .question-div > div {
+            width: 100% !important;
+        }
+
+        .question-div {
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: 100% !important;
+        }
+
+        .title {
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid lightgray;
+            font-size: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: start;
+        }
+    </style>
+</head>
+<body>
+        <div class="question-container">
+            <h1 style="text-align: center; margin-bottom: 25px;">WELL-COME TO RD GLOBAL</h1>
+            <h4 style="text-align: center; margin-bottom: 25px;">Add Your Thought Here.</h4>
+
+            <!-- Q1 -->
+            <div class="question-div" id="q1">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 1: Write a function that takes a string as input and returns the string reversed.</b>
+                </div>
+                <pre>
+                    <code>
+                        function reverseString(str) { 
+                            return str.split('').reverse().join("")
+                        }                 
+                        reverseString('Hello')
+                    </code>
+                </pre>
+                <p id="ans1" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-div" id="q2">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 2: Write a function that checks if a given string is a palindrome.</b>
+                </div>
+                <div style="width: 75%; margin-bottom: 15PX;">
+                    <pre>
+                        <code>
+                            function isPalindrome(str) {
+                                if(str === str.split("").reverse().join("")){
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            };
+                            
+                            isPalindrome('level')
+                        </code>
+                    </pre>
+                </div>
+                <div>
+                    <pre>
+                        <code>
+                            function isPalindrome(str) {
+                                for (let i = 0; i < str.length / 2; i++) {
+                                    if(str[i] !== str[str.length - 1 - i]){
+                                        return false
+                                    }
+                                }
+                                return true;
+                            };
+                            isPalindrome('level')
+                        </code>
+                    </pre>
+                </div>
+                <p id="ans2" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-div" id="q3">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 3: Write a function that takes a sentence (string) and finds the longest word.</b>
+                </div>
+                <pre>
+                    <code>
+                        function longestWord(sentence) {
+                            var stringArray = sentence.split(" ");
+                            var bigValue = 0;
+                            var lengthArray = []
+                        
+                            bigValue = stringArray.reduce((accumulator, currentValue) => {
+                                if(accumulator.length > currentValue.length) {
+                                    return accumulator;
+                                } else {
+                                    return currentValue;
+                                }
+                            })
+                            return bigValue;
+                        }      
+                        longestWord('The quick brown fox jumps over the lazy dog')
+                    </code>
+                </pre>
+                <p id="ans3" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-div" id="q4">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 4: Write a function to calculate the factorial of a given number.</b>
+                </div>
+                <pre>
+                    <code>
+                        function factorial(n) { 
+                            if(n === 0) {
+                                return 1;
+                            } else {
+                                return n * factorial(n-1);
+                            }
+                        }                 
+                        factorial(5)
+                    </code>
+                </pre>
+
+                <pre>
+                    <code>
+                        function factorial(n) { 
+                            var result = 1;
+                            for(let i = 2; i <= n; i++) { 
+                                result *= i;
+                            }
+                            return result;
+                        }                 
+                        factorial(5)
+                    </code>
+                </pre>
+                <p id="ans4" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-div" id="q5">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 5:  Write a function to generate the nth Fibonacci number.</b>
+                </div>
+                <pre>
+                    <code>
+                        function fibonacci(n) {
+                            if (n <= 0) return 0;
+                            if (n === 1) return 1;
+                            return fibonacci(n - 1) + fibonacci(n - 2);
+                        }
+                        fibonacci(6)
+                    </code>
+                </pre>
+                <pre>
+                    <code>               
+                        function fibonacci(n) {
+                            if (n <= 0) return 0;
+                            if (n === 1) return 1;
+                            
+                            let a = 0, b = 1;
+                            for (let i = 2; i <= n; i++) {
+                                [a, b] = [b, a + b];
+                            }
+                            return b;
+                        }
+                        fibonacci(6)
+                    </code>
+
+                    Example: 
+                    [0, 1] = [1, 0+1] = [1, 1]
+                    [1, 1] = [1, 1+1] = [1, 2]
+                    [1, 2] = [2, 1+2] = [2, 3]
+                    [2, 3] = [3, 2+3] = [3, 5]
+                    [3, 5] = [5, 3+5] = [5, 8]
+                </pre>
+                <p id="ans5" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+
+            <!-- Q6 -->
+            <div class="question-div" id="q6">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 6: Remove Duplicates from an Array.</b>
+                </div>
+                <pre>
+                    <code>
+                        function removeDuplicates(arr) {
+                            return arr.filter((item, index) => arr.indexOf(item) === index);
+                        }
+
+                        removeDuplicates([1, 2, 2, 3, 4, 4, 5]);
+                    </code>
+                </pre>
+                <p id="ans6" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+
+            <!-- Q7 -->
+            <div class="question-div" id="q7">
+                <div class="title">
+                    <b style="margin-left: 25px;">Question - 7: Write a function to count the number of vowels in a given string.</b>
+                </div>
+                <pre>
+                    <code>
+                        function countVowels(str) {
+                            const vowels = ['a', 'e', 'i', 'o', 'u'];
+                            const strArray = str.split('');
+                            let count = 0;
+                            for(let i=0; i < strArray.length; i++){
+                                if(vowels.includes(strArray[i])) {
+                                    count = count+1;
+                                }
+                            }
+                            return count; 
+                        }
+
+                        countVowels('Hello');
+                    </code>
+                </pre>
+                <p id="ans7" class="answer" style="font-weight: bold; font-size: 18px;"></p>
+            </div>
+        </div>
+</body>
+<script>
+    
+    /* Question 1 Ans */
+        function reverseString(str) {
+            return str.split('').reverse().join("");
+        };
+
+        const reversedString = reverseString('Hello');
+        document.getElementById('ans1').textContent = `Reversed String: ${reversedString}`;
+    /***************************************************************************************/ 
+
+    /* Question 2 Ans */
+        function isPalindrome(str) {
+            for (let i = 0; i < str.length / 2; i++) {
+                if(str[i] !== str[str.length - 1 - i]){
+                    return false
+                }
+            }
+            return true;
+
+            if(str === str.split("").reverse().join("")){
+                return true
+            } else {
+                return false
+            }
+        };
+
+        const palindromeString = isPalindrome('level');
+        document.getElementById('ans2').textContent = `Palindrome String: ${palindromeString}`;
+
+    /*******************************************************************************************/
+
+    /* Question 3 Ans */
+        function longestWord(str) {
+            var stringArray = str.split(" ");
+            var bigValue = 0;
+            var lengthArray = []
+        
+            bigValue = stringArray.reduce((accumulator, currentValue) => {
+                if(accumulator.length > currentValue.length) {
+                    return accumulator;
+                } else {
+                    return currentValue;
+                }
+            })
+            return bigValue;
+        };
+
+        const longestWordString = longestWord("The quick brown fox jumps over the lazy dog");
+        document.getElementById('ans3').textContent = `longest Word: ${longestWordString}`;
+    /***************************************************************************************/ 
+
+    /* Question 4 Ans */
+        function factorial(n) {
+            var result = 1;
+            for(let i = 2; i <= n; i++) { 
+                result *= i;
+            }
+            return result;
+        };
+
+        function factorial(n) {
+            if(n === 0) {
+                return 1;
+            } else {
+                return n * factorial(n-1);
+            }
+        };
+        
+        const factorialNumbers = factorial(5);
+        document.getElementById('ans4').textContent = `factorial: ${factorialNumbers}`;
+    /***************************************************************************************/ 
+
+    /* Question 5 Ans */
+        function fibonacci(n) {
+            if (n <= 0) return 0;
+            if (n === 1) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+
+        function fibonacci(n) {
+            if (n <= 0) return 0;
+            if (n === 1) return 1;
+            
+            let a = 0, b = 1;
+            for (let i = 2; i <= n; i++) {
+                [a, b] = [b, a + b];
+            }
+            return b;
+        }
+
+        const fibonacciNumbers = fibonacci(6);
+        document.getElementById('ans5').textContent = `fibonacci: ${fibonacciNumbers}`;
+    /***************************************************************************************/ 
+
+    /* Question 6 Ans */
+        function removeDuplicates(arr) {
+            return arr.filter((item, index) => arr.indexOf(item) === index);
+        }
+        
+        const newArray = removeDuplicates([1, 2, 2, 3, 4, 4, 5]);
+        document.getElementById('ans6').textContent = `Output: ${newArray}`;
+    /***************************************************************************************/
+
+    /* Question 7 Ans */
+        function countVowels(str) {
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            const strArray = str.split('');
+            let count = 0;
+            for(let i=0; i < strArray.length; i++){
+                if(vowels.includes(strArray[i])) {
+                    count = count+1;
+                }
+            }
+            return count;
+        }
+        
+        const vowels = countVowels('hello');
+        document.getElementById('ans7').textContent = `Output: ${vowels}`;
+    /***************************************************************************************/ 
+
+</script>
+</html>
